@@ -4,6 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Type;
+use App\Models\Restaurant;
+use Illuminate\Support\Str;
+
 
 class TypeSeeder extends Seeder
 {
@@ -14,6 +18,12 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $typologies = ['italiano', 'giapponese', 'thailandese', 'vegano', 'americano', 'fast food', 'pizzeria' ];
+
+        foreach ($typologies as $type) {
+            $new_type = new Type();
+            $new_type->name = $type;
+            $new_type->save();
+        }
     }
 }
