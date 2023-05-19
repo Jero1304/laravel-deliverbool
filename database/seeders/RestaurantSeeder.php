@@ -19,22 +19,41 @@ class RestaurantSeeder extends Seeder
     public function run(Faker $faker)
     {
         $type_ids = Type::all()->pluck('id')->all();
+        $type_name = Type::all()->get('name');
 
-        $restaurants = ['Mc Donald', 'Kfc', 'Old Wild West', 'Oro dell\'\etna', 'Fenice Azzurra', 'Sushi World'];
-      
+        // $restaurants = ['Mc Donald', 'Kfc', 'Old Wild West', 'Oro dell\'\etna', 'Fenice Azzurra', 'Sushi World'];
+        $restaurants = [
+            [
+                'name' => 'Mc Donald',
+                'type' => 'americano',
+            ],
+            [
+                'name' => 'Kfc',
+                'type' => 'fast food',
+            ],
+            [
+                'name' => 'Old Wild West',
+                'type' => 'pizzeria',
+            ]
+            ];
+ 
         
         foreach ($restaurants as $restaurant) {
             $new_restaurant = new Restaurant();
-            $new_restaurant->restaurant_name = $restaurant;
+            $new_restaurant->restaurant_name = $restaurant['name'];
             $new_restaurant->address = $faker->streetAddress();
             $new_restaurant->vat = $faker->regexify('[A-Z]{5}[0-9]{6}');
+            // $new_type= new Type();
+            // $new_type->name= $restaurant['type'];
             $new_restaurant->save();
-
-
-            $new_restaurant->types()->attach($faker->randomElements($type_ids, rand(0, 5)));
+            
+            if($restaurant['type'] == $type_name) {
+                
+                $new_restaurant->types()->attach($type_ids);
+            };
         }
     
-        // if( $restaurant == 'Mc Donald' || 'americano' && $tipe_name == 'americano' || 'fast food') {
+        // if( $restaurant == 'Mc Donald' || ('americano' && $type_name == 'americano') || 'fast food') {
 
         // }
 
