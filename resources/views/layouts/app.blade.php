@@ -46,6 +46,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
                         </li>
+                        @auth
+                        <li>
+                            <a class="nav-link" href="{{route('restaurants.index')}}">{{__('Dashboards')}}</a>
+                        </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->

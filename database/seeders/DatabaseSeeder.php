@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,6 +25,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call ([
             TypeSeeder::class, 
+            UserSeeder::class,
             RestaurantSeeder::class,
             ProductSeeder::class,
             OrderSeeder::class,
