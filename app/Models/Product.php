@@ -10,8 +10,6 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $with = ['restaurants', 'types', 'users'];
-
     protected $fillable = [
         'name',
         'ingredient',
