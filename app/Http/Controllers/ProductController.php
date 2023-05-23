@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Restaurant;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Support\Facades\Auth;
+
 
 class ProductController extends Controller
 {
@@ -24,8 +27,11 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        $restaurant_id = Restaurant::all()->pluck('id')->all();
+        $products = Product::all();
+
+        return view('products.create', compact('products'));
     }
 
     /**
@@ -36,7 +42,20 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|max:50',
+            'ingredient' => 'required',
+            'price' => 'required',
+            'thumb' => 'required',
+            'restaurant_id' => 'exists:restaurants,id'
+        ]);
+
+        $data['restaurant_id'] = Auth::id();
+
+
+        $new_product = Product::create($data);
+
+        return to_route('restaurants.show', $new_product);
     }
 
     /**
