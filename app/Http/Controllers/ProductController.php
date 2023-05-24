@@ -69,7 +69,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -80,7 +80,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -92,7 +92,22 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|max:50',
+            'ingredient' => 'required',
+            'price' => 'required',
+            'thumb' => 'required',
+            'visible' =>'required',
+            'restaurant_id' => 'exists:restaurants,id',
+        ]);
+
+        // $restaurant_id = Auth::user()->restaurants()->first();
+
+        // $data['restaurant_id'] = $restaurant_id->id;
+
+        $product->update($data);
+
+        return to_route('restaurants.index', $product);
     }
 
     /**
@@ -103,6 +118,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return to_route('restaurants.index');
     }
 }
