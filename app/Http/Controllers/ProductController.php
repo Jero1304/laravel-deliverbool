@@ -29,6 +29,7 @@ class ProductController extends Controller
     public function create()
     {   
         $restaurant_id = Restaurant::all()->pluck('id')->all();
+
         $products = Product::all();
 
         return view('products.create', compact('products'));
@@ -47,15 +48,17 @@ class ProductController extends Controller
             'ingredient' => 'required',
             'price' => 'required',
             'thumb' => 'required',
-            'restaurant_id' => 'exists:restaurants,id'
+            'visible' =>'required',
+            'restaurant_id' => 'exists:restaurants,id',
         ]);
 
-        $data['restaurant_id'] = Auth::id();
+        $restaurant_id = Auth::user()->restaurants()->first();
 
+        $data['restaurant_id'] = $restaurant_id->id;
 
         $new_product = Product::create($data);
 
-        return to_route('restaurants.show', $new_product);
+        return to_route('restaurants.index', $new_product);
     }
 
     /**

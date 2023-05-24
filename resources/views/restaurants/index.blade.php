@@ -17,7 +17,13 @@
                     <input class="btn btn-danger btn-sm" type="submit" value="Elimina">
                 </form>
             </li>
+
+            @foreach ($restaurant->products as $product)
+                <p href="">{{ $product->name }}</p>
+
+            @endforeach
         @endforeach
+
     @endif
 </div>
 

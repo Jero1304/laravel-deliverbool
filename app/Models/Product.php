@@ -14,7 +14,8 @@ class Product extends Model
         'name',
         'ingredient',
         'price',
-        'thumb' => 'required',
+        'thumb',
+        'visible',
         'restaurant_id'
     ];
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
+use App\Models\Product;
 use App\Models\Type;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
@@ -35,8 +36,9 @@ class RestaurantController extends Controller
     public function create()
     {
         $types = Type::orderBy('name', 'asc')->get();
+        $products = Product::orderBy('name', 'asc')->get();
 
-        return view ('restaurants.create', compact('types'));
+        return view ('restaurants.create', compact('types', 'products'));
     }
 
     /**
@@ -128,7 +130,7 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        $restaurant->forceDelete();
+        $restaurant->delete();
       
         return to_route('restaurants.index');
     }

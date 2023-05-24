@@ -28,6 +28,22 @@
                 @enderror
         </div>
 
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Immagine</label>
+            <input type="text" class="form-control @error('thumb') is-invalid @enderror" value="{{old('thumb')}}" id="exampleFormControlInput1" name="thumb">
+                @error('thumb')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Visibile</label>
+            <input type="text" class="form-control @error('visible') is-invalid @enderror" value="{{old('visible')}}" id="exampleFormControlInput1" name="visible">
+                @error('visible')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+        </div>
+
     <button type="submit" class="btn btn-primary">Crea</button>
 
     </form>
