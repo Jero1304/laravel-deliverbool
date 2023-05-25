@@ -23,9 +23,10 @@ class OrderSeeder extends Seeder
 
         for ($i = 0; $i < 30; $i++) {
             $order = new Order();
-            $order->date = $faker->date();
+            $order->client_name = $faker->name(12);
+            $order->date = $faker->dateTimeBetween('-1 day', 'now');
             $order->code = $faker->lexify('id-????');
-            $order->address = $faker->sentence(3);
+            $order->address = $faker->streetAddress();
             $order->total_price = $faker->randomFloat(2, 5, 30);
             $order->save();
 
