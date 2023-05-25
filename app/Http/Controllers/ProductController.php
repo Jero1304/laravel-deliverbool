@@ -101,9 +101,6 @@ class ProductController extends Controller
             'restaurant_id' => 'exists:restaurants,id',
         ]);
 
-        // $restaurant_id = Auth::user()->restaurants()->first();
-
-        // $data['restaurant_id'] = $restaurant_id->id;
 
         $product->update($data);
 

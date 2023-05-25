@@ -17,7 +17,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
+        $restaurant = Auth::user()->restaurants()->first();
+        $orders = Order::all()->where('restaurant_id',$restaurant->id);    
+
+
         return view('orders.index', compact('orders'));
     }
 
@@ -50,7 +53,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('orders.show', compact('order'));
     }
 
     /**

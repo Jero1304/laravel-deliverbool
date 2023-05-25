@@ -3,7 +3,11 @@
 @extends('layouts.app')
 @section('content')
 
-questo è il dettaglio ordine
+<div class="container py-4">
+
+    questo è il dettaglio ordine
+
+</div>
 
 
 @endsection
