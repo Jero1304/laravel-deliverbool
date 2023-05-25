@@ -7,6 +7,8 @@ use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 
 class ProductController extends Controller
@@ -43,11 +45,13 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
+        // dd($request->all());
+
         $data = $request->validate([
             'name' => 'required|max:50',
             'ingredient' => 'required',
             'price' => 'required',
-            'thumb' => 'required',
+            'thumb' => 'required|image',
             'visible' =>'required',
             'restaurant_id' => 'exists:restaurants,id',
         ]);
@@ -55,6 +59,10 @@ class ProductController extends Controller
         $restaurant_id = Auth::user()->restaurants()->first();
 
         $data['restaurant_id'] = $restaurant_id->id;
+
+        if ($request->hasFile('thumb')) {
+            $image = Storage::put('uploads', $data['thumb']);
+        }
 
         $new_product = Product::create($data);
 

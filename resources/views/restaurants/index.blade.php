@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container py-5">
+
     
     @if ($restaurants->isEmpty())
         <div class="py-5">
@@ -20,8 +21,13 @@
             </li>
 
             @foreach ($restaurant->products as $product)
+                <div class="container py-5">
+                    <img src="{{ asset('storage/'.$product->thumb ) }}" alt="">
+                </div>
+
                 <a href="{{ route('products.show', $product) }}">{{ $product->name }}</a>
                 <p>{{ $product->price }}</p>
+                <img src="" alt="">
             @endforeach
         @endforeach
 
