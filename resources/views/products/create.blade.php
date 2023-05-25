@@ -29,8 +29,8 @@
         </div>
 
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Immagine</label>
-            <input type="text" class="form-control @error('thumb') is-invalid @enderror" value="{{old('thumb')}}" id="exampleFormControlInput1" name="thumb">
+            <label for="thumb" class="form-label">Immagine prodotto</label>
+            <input type="file" class="form-control @error('thumb') is-invalid @enderror" value="{{old('thumb')}}"  id="thumb" name="thumb">
                 @error('thumb')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
