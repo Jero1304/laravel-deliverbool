@@ -17,8 +17,17 @@ class OrderController extends Controller
      */
     public function index()
     {
+        // $products = Product::all();
+        $products = Product::all();
         $orders = Order::all();
-        return view('orders.index', compact('orders'));
+
+        // $orders = Order::find(2);
+
+        // foreach ($orders->products as $product) {
+        //     return $product->pivot->order_id;
+        // }
+
+        return view('orders.index', compact('orders', 'products'));
     }
 
     /**
