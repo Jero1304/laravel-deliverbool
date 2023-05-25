@@ -20,6 +20,7 @@ class OrderSeeder extends Seeder
     public function run(Faker $faker)
     {   
         $product_ids = Product::all()->pluck('id');
+        $restaurant_id = Restaurant::all()->pluck('id')->all();
 
         for ($i = 0; $i < 30; $i++) {
             $order = new Order();
@@ -28,6 +29,7 @@ class OrderSeeder extends Seeder
             $order->code = $faker->lexify('id-????');
             $order->address = $faker->streetAddress();
             $order->total_price = $faker->randomFloat(2, 5, 30);
+            $order->restaurant_id = $faker->randomElement($restaurant_id);
             $order->save();
 
             $order->products()->attach($faker->randomElements($product_ids, rand(0, 5)));
