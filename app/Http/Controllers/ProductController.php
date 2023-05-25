@@ -69,6 +69,12 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+
+        $restaurant = Auth::user()->restaurants()->first();
+        
+        if ($product->restaurant_id != $restaurant->id) {
+            abort(403, 'Unauthorized action.');
+        }
         return view('products.show', compact('product'));
     }
 

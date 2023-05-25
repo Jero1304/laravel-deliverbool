@@ -20,7 +20,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
- 
+        
         $user_id = Auth::id(); 
         $restaurants = Restaurant::all()->where('user_id', $user_id);
         //dd($restaurants);
@@ -77,6 +77,10 @@ class RestaurantController extends Controller
     public function show(Restaurant $restaurant)
     {
         $types = Type::orderBy('name', 'asc')->get();
+
+        if ($restaurant->user_id != Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
 
         return view('restaurants.show', compact('restaurant', 'types'));
     }
