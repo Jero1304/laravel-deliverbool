@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 
-class RestaurantApiController extends Controller
+class RestaurantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class RestaurantApiController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::with('types', 'product')->paginate(20);
+        $restaurants = Restaurant::with('types')->paginate(20);
 
         return response()->json([
             'results' => $restaurants,
