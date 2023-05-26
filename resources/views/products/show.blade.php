@@ -1,20 +1,25 @@
 @extends('layouts.app')
 @section('content')
 <div class="container py-5">
-    <figure>
-        <img src="" alt="image">
-    </figure>
-    <p>Nome prodotto: {{$product->name}}</p>
-    <p>Ingredienti: {{$product->ingredient}}</p>
-    <p>Prezzo &euro;{{$product->price}}</p>
-    <div class="d-flex">
-    <a class="btn btn-primary" href="{{ route('products.edit', $product) }}">Modifica</a>
-    <form action="{{ route('products.destroy', $product) }}" method="POST">
-        @csrf
-        @method('DELETE')
-        <input class="btn btn-danger" type="submit" value="Elimina">
-    </form>
+    <div class="card m-auto text-center" style="width: 18rem;">
+        <figure>
+            <img src="" alt="image">
+        </figure>
+        <div class="card-body">
+          <h5 class="card-title">{{$product->name}}</h5>
+          <p class="card-text">Prezzo: &euro;{{$product->price}}</p>
+          <p>Ingredienti: {{$product->ingredient}}</p>
+          <div class="d-flex gap-2 justify-content-center">
+                <a class="btn btn-primary btn-sm" href="{{ route('products.edit', $product) }}">Modifica</a>
+                <form action="{{ route('products.destroy', $product) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <input class="btn btn-danger btn-sm" type="submit" value="Elimina">
+                </form>
+          </div>
+        </div>
+      </div>  
 </div>
-</div>
+
 
 @endsection
