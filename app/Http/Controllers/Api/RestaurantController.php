@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use App\Models\Product;
+use App\Models\Type;
 
 class RestaurantController extends Controller
 {
@@ -15,7 +17,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::with('types')->paginate(20);
+        $restaurants = Restaurant::with('types','products')->paginate(20);
 
         return response()->json([
             'results' => $restaurants,
