@@ -1,14 +1,15 @@
 @extends('layouts.app')
 @section('content')
 <div class="container py-5">
-    <a href="{{route('products.create')}}">Aggiungi piatti</a>  
-    <p>{{$restaurant->restaurant_name}}</p>
-    <p>{{$restaurant->address}}</p>
-    <p>{{$restaurant->vat}}</p>
+    <h3 class="py-5">{{$restaurant->restaurant_name}}</h3>
+    <p>Indirizzo: {{$restaurant->address}}</p>
+    <p>Partita IVA: {{$restaurant->vat}}</p>
+    <p>Tipologia ristorante: 
     @forelse ($restaurant->types as $type)
-    <p>{{$type->name}}</p>
+    {{$type->name}}
     @empty
     @endforelse
+    </p>
 </div>
 
 @endsection

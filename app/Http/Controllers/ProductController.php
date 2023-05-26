@@ -45,8 +45,6 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        // dd($request->all());
-
         $data = $request->validate([
             'name' => 'required|max:50',
             'ingredient' => 'required',
@@ -62,6 +60,8 @@ class ProductController extends Controller
 
         if ($request->hasFile('thumb')) {
             $image = Storage::put('uploads', $data['thumb']);
+            $data['thumb'] = $image;
+            // dd($image);
         }
 
         $new_product = Product::create($data);
