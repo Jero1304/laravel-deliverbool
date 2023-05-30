@@ -17,11 +17,16 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::with('types','products')->paginate(20);
-
+        $restaurants = Restaurant::with('types','products')->paginate(100);
+        
         return response()->json([
             'results' => $restaurants,
         ]);
+        // $types = Types::with('restaurant');
+        // return response()->json([
+        //     'results' => $types,
+        // ]);
+
     }
 
     /**
