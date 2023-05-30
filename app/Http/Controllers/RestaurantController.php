@@ -95,6 +95,9 @@ class RestaurantController extends Controller
     {
         $types = Type::orderBy('name', 'asc')->get();
         
+        if ($restaurant->user_id != Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
         return view('restaurants.edit', compact('restaurant', 'types'));
 
     }

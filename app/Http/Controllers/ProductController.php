@@ -94,6 +94,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $restaurant = Auth::user()->restaurants()->first();
+        
+        if ($product->restaurant_id != $restaurant->id) {
+            abort(403, 'Unauthorized action.');
+        }
         return view('products.edit', compact('product'));
     }
 
