@@ -2,7 +2,15 @@
 @section('content')
 
 <div class="container py-5">
-
+    {{-- @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif --}}
     <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
 
@@ -49,4 +57,5 @@
     </form>
     
 </div>
-    @endsection
+
+@endsection
