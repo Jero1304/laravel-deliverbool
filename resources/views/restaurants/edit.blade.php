@@ -29,7 +29,7 @@
         </div>
     @foreach($types as $key => $type)
         <div class="form-check">
-            <input name="types[]" @checked(in_array($type->id, old('types', $restaurant->types->pluck('id')->all() ))) class="form-check-input" type="checkbox" value="{{ $type->id }}" id="flexCheckDefault" required>
+            <input name="types[]" @checked(in_array($type->id, old('types', $restaurant->types->pluck('id')->all() ))) class="form-check-input" type="checkbox" value="{{ $type->id }}" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
             {{ $type->name }}
             </label>
