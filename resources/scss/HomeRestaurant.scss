@@ -1,6 +1,6 @@
-body {
+.section-homeRestaurant {
     background-color: rgb(255, 204, 29);
-    background-image: linear-gradient(rgb(255, 204, 0), rgba(214, 24, 24, 1));
+    // background-image: linear-gradient(rgb(255, 204, 0), rgba(214, 24, 24, 1));
 }
 
 .card {
@@ -19,12 +19,9 @@ img {
 
 }
 
-.button-edit-delete {
-    margin-top: auto;
-}
+// .button-edit-delete {
+//     margin-top: auto;
+// }
 
-.nav-main {
-    background-color: $yellow;
-}
 
 
