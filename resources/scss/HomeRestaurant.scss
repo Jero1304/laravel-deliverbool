@@ -1,9 +1,10 @@
 body {
     background-color: rgb(255, 204, 29);
+    background-image: linear-gradient(rgb(255, 204, 0), rgba(214, 24, 24, 1));
 }
 
 .card {
-    background-color: rgb(255, 204, 29);
+    background-color: transparent;
 
 img {
     width: 18rem;
@@ -25,3 +26,5 @@ img {
 .nav-main {
     background-color: $yellow;
 }
+
+
