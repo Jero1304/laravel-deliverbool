@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container py-5">
-
-    <form action="{{route('restaurants.store')}}" method="POST" enctype="multipart/form-data">
+<div class="master container-sm d-flex gap-3 p-5 justify-content-center align-items-center">
+<div class="col-6">
+<form action="{{route('restaurants.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         
         <div class="mb-3">
@@ -29,7 +29,7 @@
         </div>
         @foreach($types as $key => $type)
         <div class="form-check">
-            <input name="types[]" @checked(in_array($type->id, old('types', $restaurant->types->pluck('id')->all() ))) class="form-check-input @error('types[]') is-invalid @enderror" type="checkbox" value="{{ $type->id }}" id="flexCheckDefault" onclick="updateSelectedCount()">
+            <input name="types[]" @checked(in_array($type->id, old('types',[]))) class="form-check-input @error('types[]') is-invalid @enderror" type="checkbox" value="{{ $type->id }}" id="flexCheckDefault" onclick="updateSelectedCount()">
             <label class="form-check-label" for="flexCheckDefault">
             {{ $type->name }}
             </label>
@@ -38,12 +38,13 @@
             @enderror
             {{-- <p id="error-message" style="display: none; color: red;">Seleziona almeno una checkbox.</p> --}}
         </div>
-    @endforeach
+        @endforeach
+     
+    <button type="submit" class=" create_btn btn btn-primary">Crea</button>
 
-    <button type="submit" class="btn btn-primary">Crea</button>
+  </form>
+</div>
 
-    </form>
-    
 </div>
     @endsection
 
