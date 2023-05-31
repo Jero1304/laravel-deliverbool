@@ -45,11 +45,9 @@
         </div>
 
         <div class="form-check form-switch">
-            <input class="form-check-input @error('visible') is-invalid @enderror" value="{{old('visible')}}" id="exampleFormControlInput1" name="visible" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked title="seleziona il campo";>
+            <input class="form-check-input "value="{{old('visible')}}" id="exampleFormControlInput1" name="visible" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
             <label class="form-check-label mb-5" for="flexSwitchCheckChecked">Visibile</label>
-            @error('visible')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+            
             {{-- aggiungere validazione del check --}}
         </div>
 

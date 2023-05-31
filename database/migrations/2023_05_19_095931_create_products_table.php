@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('ingredient');
             $table->decimal('price', $precision = 8, $scale = 2);
             $table->string('thumb');
-            $table->boolean('visible');
+            $table->boolean('visible')->default(true)->nullable;
             $table->timestamps();
         });
     }
