@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container py-5">
-
-    <form action="{{route('restaurants.store')}}" method="POST" enctype="multipart/form-data">
+<div class="master container-sm d-flex gap-3 p-5 justify-content-center align-items-center">
+<div class="col-6">
+<form action="{{route('restaurants.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         
         <div class="mb-3">
@@ -40,12 +40,13 @@
             {{-- <p id="error-message" style="display: none; color: red;">Seleziona almeno una checkbox.</p> --}}
         </div>
         @endforeach
+     
+    <button type="submit" class=" create_btn btn btn-primary">Crea</button>
         
 
-    <button type="submit" class="btn btn-primary">Crea</button>
+  </form>
+</div>
 
-    </form>
-    
 </div>
     @endsection
 
