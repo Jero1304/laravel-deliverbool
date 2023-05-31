@@ -27,6 +27,7 @@
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
         </div>
+        
         @foreach($types as $key => $type)
         <div class="form-check">
             <input name="types[]" @checked(in_array($type->id, old('types',[]))) class="form-check-input @error('types[]') is-invalid @enderror" type="checkbox" value="{{ $type->id }}" id="flexCheckDefault" onclick="updateSelectedCount()">
@@ -41,6 +42,7 @@
         @endforeach
      
     <button type="submit" class=" create_btn btn btn-primary">Crea</button>
+        
 
   </form>
 </div>

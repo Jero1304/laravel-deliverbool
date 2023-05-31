@@ -34,11 +34,12 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
+        $restaurants = Restaurant::all();
         $types = Type::orderBy('name', 'asc')->get();
         $products = Product::orderBy('name', 'asc')->get();
 
-        return view ('restaurants.create', compact('types', 'products'));
+        return view ('restaurants.create', compact('types', 'products', 'restaurants'));
     }
 
     /**
@@ -76,6 +77,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
+        
         $types = Type::orderBy('name', 'asc')->get();
 
         if ($restaurant->user_id != Auth::id()) {
