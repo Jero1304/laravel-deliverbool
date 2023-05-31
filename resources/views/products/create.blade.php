@@ -16,7 +16,7 @@
 
         <div class="mb-3">
             <label for="thumb" class="form-label">Immagine prodotto</label>
-            <input type="file" accept="image/*" required class="form-control @error('thumb') is-invalid @enderror" value="{{old('thumb')}}"  id="thumb" name="thumb">
+            <input type="file" accept="image/*" required max="1000000" title="inserisci un immagine max 1MB" class="form-control @error('thumb') is-invalid @enderror" value="{{old('thumb')}}"  id="thumb" name="thumb" onchange="validateImage()">
                 @error('thumb')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -47,8 +47,7 @@
         <div class="form-check form-switch">
             <input class="form-check-input "value="{{old('visible')}}" id="exampleFormControlInput1" name="visible" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
             <label class="form-check-label mb-5" for="flexSwitchCheckChecked">Visibile</label>
-            
-            {{-- aggiungere validazione del check --}}
+           
         </div>
 
     <button type="submit" class="btn btn-primary">Crea</button>
@@ -58,3 +57,23 @@
 </div>
 
 @endsection
+
+<script>
+    function validateImage() {
+      let input = document.getElementById('thumb');
+      let errorText = document.getElementById('errorText');
+    
+      if (input.files && input.files[0]) {
+        let file = input.files[0];
+        let fileSizeMB = file.size / (1024 * 1024); // Converti la dimensione del file in MB
+    
+        if (fileSizeMB > 1) {
+          errorText.textContent = 'La dimensione del file supera 1 MB. Selezionare un file più piccolo.';
+          input.value = ''; // Reset del campo di input
+        } else {
+          errorText.textContent = ''; // Pulisce il messaggio di errore
+          // Carica il file o esegui altre azioni
+        }
+      }
+    }
+</script>
