@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -33,5 +34,14 @@ class Restaurant extends Model
 
     public function orders(){
         return $this->hasMany(Order::class);
+    }
+
+    protected function thumbPath(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value, $attributes) {
+                return asset('storage/' . $attributes['thumb']);
+            }
+        );
     }
 }
