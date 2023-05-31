@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-<section class="section-homeRestaurant">
-    <!-- <div class="section_home_ristaurant text-center">
+<!-- <section class="section-homeRestaurant">
+    <div class="section_home_ristaurant text-center">
         @if ($restaurants->isEmpty())
             <div class=" container py-3">
                 <a class="btn btn-primary" href="{{route('restaurants.create')}}">Aggiungi ristorante</a>
@@ -218,7 +218,6 @@
 
 
         @foreach ($restaurant->products as $product)  
-
             <div class="card" style="width: 18rem;">
                 <div class="box-image">
                     <img src="{{ asset('storage/'.$product->thumb ) }}" width="100%" alt="">
@@ -239,7 +238,7 @@
                         </form>
                     </div>
                 </div>
-        </div>
+            </div>
         @endforeach  
     </div>
     <div class="d-flex gap-3">
@@ -249,12 +248,6 @@
     @endforeach
     @endif
 </section>
-
-
-
-
-
-
 <!-- <section class="wave-section">
         <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path fill="#FF5B00" fill-opacity="1"
@@ -332,5 +325,5 @@
 
 
 
-@endsection
+@endsection 
 

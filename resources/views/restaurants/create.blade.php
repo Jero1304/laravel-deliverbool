@@ -15,7 +15,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Indirizzo</label>
-            <input type="text" pattern="[a-zA-Z0-9]+"minlength="5" title="L'indirizzo deve contenere solo lettere e numeri e avere almeno 5 caratteri" class="form-control @error('address') is-invalid @enderror" value="{{old('address')}}"  id="exampleFormControlInput1" name="address" required>
+            <input type="text" pattern="[a-zA-Z0-9 ,]+" minlength="5" title="L'indirizzo deve contenere solo lettere e numeri e avere almeno 5 caratteri" class="form-control @error('address') is-invalid @enderror" value="{{old('address')}}"  id="exampleFormControlInput1" name="address" required>
                 @error('address')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
