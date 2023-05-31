@@ -27,10 +27,10 @@
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
         </div>
-        @foreach ($restaurants as $restaurant)
+        
         @foreach($types as $key => $type)
         <div class="form-check">
-            <input name="types[]" @checked(in_array($type->id, old('types', $restaurant->types->pluck('id')->all() ))) class="form-check-input @error('types[]') is-invalid @enderror" type="checkbox" value="{{ $type->id }}" id="flexCheckDefault" onclick="updateSelectedCount()">
+            <input name="types[]" @checked(in_array($type->id, old('types',[]))) class="form-check-input @error('types[]') is-invalid @enderror" type="checkbox" value="{{ $type->id }}" id="flexCheckDefault" onclick="updateSelectedCount()">
             <label class="form-check-label" for="flexCheckDefault">
             {{ $type->name }}
             </label>
@@ -40,7 +40,7 @@
             {{-- <p id="error-message" style="display: none; color: red;">Seleziona almeno una checkbox.</p> --}}
         </div>
         @endforeach
-        @endforeach
+        
 
     <button type="submit" class="btn btn-primary">Crea</button>
 
