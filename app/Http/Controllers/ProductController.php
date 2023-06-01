@@ -50,9 +50,14 @@ class ProductController extends Controller
             'ingredient' => 'required',
             'price' => 'required',
             'thumb' => 'required|image',
-            'visible' =>'required',
+            'visible' =>'nullable|boolean',
             'restaurant_id' => 'exists:restaurants,id',
         ]);
+
+        if (!isset($data['visible'])) {
+            // Se il campo "visibilita" non è stato fornito, assegna il valore predefinito di true
+            $data['visible'] = true;
+        }
 
         $restaurant_id = Auth::user()->restaurants()->first();
 
@@ -116,10 +121,16 @@ class ProductController extends Controller
             'ingredient' => 'required',
             'price' => 'required',
             'thumb' => 'required',
-            'visible' =>'required',
+            'visible' =>'nullable|boolean',
             'restaurant_id' => 'exists:restaurants,id',
         ]);
 
+        if (!isset($data['visible'])) {
+            // Se il campo "visibilita" non è stato fornito, assegna il valore predefinito di true
+            $data['visible'] = true;
+        }
+
+        
 
         $product->update($data);
 

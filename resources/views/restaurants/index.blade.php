@@ -31,7 +31,7 @@
                     <p class="card-text text-overflow">Prezzo: {{$product->price}}</p>
                     <div class="d-flex justify-content-center gap-2 button-edit-delete">
                         <a class="btn btn-primary btn-sm" href="{{route('products.edit',$product)}}">Modifica</a>
-                        <form action="{{ route('restaurants.destroy', $restaurant) }}" method="POST">
+                        <form action="{{ route('products.destroy', $product) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <input class="btn btn-primary btn-sm" type="submit" value="Elimina">
