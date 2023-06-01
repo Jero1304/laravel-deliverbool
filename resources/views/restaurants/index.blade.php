@@ -1,12 +1,19 @@
 @extends('layouts.app')
 @section('content')
-<section class="section-homeRestaurant">
+<!-- <section class="section-homeRestaurant">
     <div class="section_home_ristaurant text-center">
         @if ($restaurants->isEmpty())
             <div class=" container py-3">
                 <a class="btn btn-primary" href="{{route('restaurants.create')}}">Aggiungi ristorante</a>
             </div>
         @else
+
+
+
+
+
+
+        
 
 
         <h3 class="py-4">Nome Ristorante</h3>
@@ -182,14 +189,11 @@
             </div>
         </div>
         @endif
-    </div>
+    </div> -->
 
 
 
-
-
-
-    <!-- <div class="container text-center">
+    <div class="container text-center">
         @if ($restaurants->isEmpty())
             <div class=" container py-3">
                 <a class="btn btn-primary" href="{{route('restaurants.create')}}">Aggiungi ristorante</a>
@@ -198,7 +202,15 @@
 
         
         @foreach ($restaurants as $restaurant)
-        <h3 class="py-5">{{ $restaurant->restaurant_name }}</h3>
+            <h3 class="py-5">{{ $restaurant->restaurant_name }}</h3>
+            <div class="d-flex gap-3">
+                <a class="btn btn-primary btn-sm" href="{{route('restaurants.edit',$restaurant)}}">Modifica ristorante</a>
+                <form action="{{ route('restaurants.destroy', $restaurant) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <input class="btn btn-primary btn-sm" type="submit" value="Elimina ristorante">
+                </form>
+            </div>
         <div class="d-flex justify-content-end pt-5 pb-4">
             <a class="btn btn-primary btn-sm" href="{{route('products.create')}}">Aggiungi piatti</a>
         </div>
@@ -206,7 +218,6 @@
 
 
         @foreach ($restaurant->products as $product)  
-
             <div class="card" style="width: 18rem;">
                 <div class="box-image">
                     <img src="{{ asset('storage/'.$product->thumb ) }}" width="100%" alt="">
@@ -220,14 +231,14 @@
                     <p class="card-text text-overflow">Prezzo: {{ $product->price }}</p>
                     <div class="d-flex justify-content-center gap-2 button-edit-delete">
                         <a class="btn btn-primary btn-sm" href="{{route('products.edit',$product)}}">Modifica</a>
-                        <form action="{{ route('restaurants.destroy', $restaurant) }}" method="POST">
+                        <form action="{{ route('products.destroy', $product) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <input class="btn btn-primary btn-sm" type="submit" value="Elimina">
                         </form>
                     </div>
                 </div>
-        </div>
+            </div>
         @endforeach  
     </div>
     <div class="d-flex gap-3">
@@ -237,7 +248,7 @@
     @endforeach
     @endif
 </section>
-<section class="wave-section"> -->
+<!-- <section class="wave-section">
         <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path fill="#FF5B00" fill-opacity="1"
                 d="M0,192L48,181.3C96,171,192,149,288,133.3C384,117,480,107,576,90.7C672,75,768,53,864,64C960,75,1056,117,1152,138.7C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
@@ -303,7 +314,7 @@
             </div>
         </div>
     </section>
-
+ -->
     <section class="copy">
         <div class="container text-center">
             <span>
@@ -314,5 +325,5 @@
 
 
 
-@endsection
+@endsection 
 

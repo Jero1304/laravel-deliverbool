@@ -130,6 +130,7 @@ class ProductController extends Controller
             $data['visible'] = true;
         }
 
+        
 
         $product->update($data);
 
